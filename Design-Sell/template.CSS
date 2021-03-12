@@ -1,0 +1,85 @@
+/*Styling for the whole webpage template*/
+body{
+    background-color:skyblue;
+    height:1050px;
+}
+
+
+#bodyContent{
+    margin:0px 10px 0px;
+    height:950px;
+    border:2px black solid;
+}
+
+/*Styling for the entire header*/
+#headerContainer{
+    border:3px black solid;
+    background-color:orangered;
+    color:white;
+    height:61px;
+}
+
+#header{
+    text-align:center;
+}
+
+#navBar{
+    text-align:center;
+    border-top:3px black solid;
+    border-bottom:3px black solid;
+    height:25px;
+    padding-top:5px;
+}
+
+/*Change color of hyperlinks when customer hovers over them*/
+a:hover{
+    color:white;
+    background-color:black;
+}
+
+/*Styling for the main content of the webpage template*/
+#mainContent{
+    width:100%;
+    height:850px;
+}
+
+#mainContent p{
+    padding-left:5px;
+}
+
+/*Column styling side-by-side*/
+#mainContent:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+
+/*Base column styling*/
+.column{
+    margin:8.5px 0% 8.5px;
+    width:calc(50% - 2px);
+    float:left;
+    height:98%;
+    text-align:center;
+}
+
+/*Left column*/
+#columnOne{
+    border-right:1px solid black;
+}
+
+/*Right column*/
+#columnTwo{
+    border-left:1px solid black;
+}
+
+/*Styling for the footer*/
+#footer{
+    margin-top:10px;
+    width:auto;
+    height:43px;
+    padding:5px 10px 30px;
+    border:2px black solid;
+    border-top:5px black solid;
+    background-color:cornflowerblue;
+}
