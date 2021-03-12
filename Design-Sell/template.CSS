@@ -55,7 +55,7 @@ a:hover{
 }
 
 /*Base column styling*/
-.column{
+div.column{
     margin:8.5px 0% 8.5px;
     width:calc(50% - 2px);
     float:left;
