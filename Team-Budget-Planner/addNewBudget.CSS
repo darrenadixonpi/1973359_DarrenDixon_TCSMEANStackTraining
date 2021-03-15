@@ -1,0 +1,21 @@
+/*
+Darren Dixon
+Team Budget Planning
+March 15th, 2021 
+styling for Program Managers page!
+*/
+#budgetForm{
+    border: 3px solid black;
+    border-radius: 5px;
+    margin:10px 40% 0px;
+    text-align:center;
+    padding:5px;
+}
+
+#budgetForm span{
+    text-align:left;
+}
+
+#budgetForm input{
+    text-align:right;
+}

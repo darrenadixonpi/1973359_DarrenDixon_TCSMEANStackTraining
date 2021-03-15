@@ -14,6 +14,9 @@ March 15th, 2021
         <title>Program Managers</title>
         <!--Link to template CSS-->
         <link rel="stylesheet" href="template.CSS"/>
+        <!--CSS for Program Managers page-->
+        <link rel="stylesheet" href="addNewBudget.CSS"/>
+        <script src="addNewBudget.js" type="text/javascript" defer></script>
     </head>
 
     <body>
@@ -23,7 +26,7 @@ March 15th, 2021
             <div id="headerContainer">
                 <!--HEADER-->
                 <h1 id="header">
-                    <font>Main message for the website goes here!</font>
+                    <font>Please keep budgets for the teams up-to-date. Thank you!</font>
                 </h1>
             </div>
 
@@ -36,9 +39,24 @@ March 15th, 2021
                 </big>
             </div>
 
-            <!--About Us main content-->
+            <!--Main Content of page-->
             <div id="mainContent">
-                <p>This is where you will be adding new team budgets!</p>
+                <!--New Team Budget Form-->
+                <!--Client Name, Project Name, Budget, Add/Clear/Back buttons-->
+                <div id="budgetForm">
+                    <form id="newBudget">
+                        <!--Text input forms, client name, project name, budget (number)-->
+                        <br/><span>Client Name:</span>&nbsp;&nbsp;&nbsp;<input type="text" id="clientName"/><br/><br/>
+                        <span>Project Name:</span>&nbsp;<input type="text" id="projectName"/><br/><br/>
+                        <span>Budget:</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" id="budget"/><br/><br/>
+                        <!--Buttons, add budget, clear form, go back to previous page-->
+                        <input type="button" value="Add" id="addBudget"></input>&nbsp;
+                        <button type="Reset" value="Clear">Clear</button>&nbsp;
+                        <input type="button" value = "Back" onclick="history.back()"></input>
+                    </form>
+                </div>
             </div>
         </div>
 
