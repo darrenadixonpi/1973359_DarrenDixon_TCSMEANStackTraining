@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+Darren Dixon
+Simply Blogging
+March 16th, 2021 
+-->
+<!--Blog-Adding-page of Template Website-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Blog</title>
+        <!--Link to template CSS-->
+        <link rel="stylesheet" href="template.CSS"/>
+        <!--CSS for Add-Blog-page-->
+        <link rel="stylesheet" href="addNewBlog.CSS"/>
+        <script src="addNewBlog.js" type="text/javascript" defer></script>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="bodyContent">
+
+            <!--Main Website Message-->
+            <div id="headerContainer">
+                <!--HEADER-->
+                <h1 id="header">
+                    <font>Add a blog here!</font>
+                </h1>
+            </div>
+
+            <!--Navigation Bar-->
+            <div id="navBar">
+                <big>
+                    <a href="index.html">Home</a> <strong>|</strong>
+                    <a href="addNewBlog.html">Add Blog</a> <strong>|</strong>
+                    <a href="viewBlogs.html">View Blogs</a> <strong>|</strong>
+                    <a href="aboutUs.html">About Us</a> <strong>|</strong>  
+                    <a href="contactUs.html">Contact Us</a>
+                </big>
+            </div>
+
+            <!--Columns for main content-->
+            <div id="mainContent">
+                <!--New Blog Form-->
+                <!--Blog Title, articles relating to blog, image-->
+                <div id="blogForm">
+                    <form id="newBlog">
+                        <!--Text input forms, Blog title, articles, image upload etc.-->
+                        <br/><span>Blog Title:</span>&nbsp;&nbsp;&nbsp;<input type="text" id="blogTitle"/><br/><br/>
+                        <span>Articles:</span></br>&nbsp;<textarea form="newBlog" id="blogArticles"></textarea><br/><br/>
+                        <span><big>Image</big></span></br></br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="file" accept="image/*" name="blogImage" id="blogImage" onchange="loadBlogImage(event)"/><br/><br/>
+                        <!--Buttons, add blog, clear form, go back to previous page-->
+                        <input type="button" value="Add Blog" id="addBlog" class="btn btn-primary"></input>&nbsp;
+                        <button type="Reset" value="Clear" class="btn btn-warning">Clear</button>&nbsp;
+                        <input type="button" value = "Back" onclick="history.back()" class="btn btn-dark"></input>
+                        </br></br>
+                        <!--Alert notifying the user that the form will reset if they press "clear" or "back"-->
+                        <div class="alert alert-dark">
+                            Warning, clicking "Clear" or "Back" will reset the form!
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--FOOTER-->
+            <div id="footer">
+                <footer>
+                    Additional information you want presented on all webpages goes here.
+                </footer>
+            </div>
+        </div>
+    </body>
+
+</html>

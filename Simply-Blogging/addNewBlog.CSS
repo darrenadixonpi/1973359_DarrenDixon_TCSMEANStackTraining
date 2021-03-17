@@ -1,0 +1,26 @@
+/*
+Darren Dixon
+Simply Blogging
+March 16th, 2021 
+styling for Add-Blog-page!
+*/
+#blogForm{
+    border: 3px solid black;
+    border-radius: 5px;
+    margin:10px 40% 10px;
+    text-align:center;
+    padding:5px;
+}
+
+#blogForm span{
+    text-align:left;
+}
+
+#blogForm textarea{
+    width:200px;
+    height:100px;
+    max-width:200px;
+}
+#blogForm input{
+    text-align:right;
+}

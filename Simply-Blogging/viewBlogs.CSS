@@ -1,0 +1,21 @@
+/*Styling for the main content of the webpage template*/
+#mainContent .blog{
+    width:500px; 
+    height:fit-content;
+    border:3px black solid; 
+    margin:5px;
+    margin-left:45px;
+    margin-right:45px; 
+    border-radius:3px; 
+    text-align:center;
+    float:left;
+}
+
+#mainContent .blog img{
+    max-width:400px;
+    max-height:150px;
+}
+
+.container div{
+    text-align:center;
+}
