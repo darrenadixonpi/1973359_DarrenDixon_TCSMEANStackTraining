@@ -1,0 +1,236 @@
+<!--
+Darren Dixon
+Cart Management
+March 19th, 2021 
+View Shop webpage
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <!--My CSS/JS-->
+        <link href="template.CSS" rel="stylesheet"/>
+        <script src="viewShop.js" defer></script>
+    </head>
+    <body>
+        <div id="mainContent" class="container-fluid wrapper">
+
+            <!--Navigation Bar-->
+            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
+                <h5 class="my-0 mr-md-auto font-weight-normal">Shop here! =)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</h5>
+                <nav class="my-2 my-md-0 mr-md-3">
+                    <a id="navLink" class="p-2 text-dark" href="index.html">Home</a>
+                  <a id="navLink" class="p-2 text-dark" href="viewShop.html">View Shop</a>
+                  <a id="navLink" class="p-2 text-dark" href="checkout.html">Checkout</a>
+                </nav>
+            </div>
+
+            <!--BODY-->
+            <div id="bodyContent" class="container-fluid">
+                <div class="row">
+                    <!--ITEM 1-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://images-na.ssl-images-amazon.com/images/I/71MQeIS7FAL._SL1500_.jpg" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="1">
+                            <h5 class="card-title" id="itemName1">
+                                Nacho Cheese Doritos
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice1">4</span>
+                            </h6>
+                            <p class="card-text">
+                                Mmm everybody loves Doritos!
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity1" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 2-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://prods3.imgix.net/images/articles/2017_12/nonfeatured.1-gummy-bear-menu.jpg?auto=format%2Ccompress&ixjsv=2.2.3&w=750" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="2">
+                            <h5 class="card-title" id="itemName2">
+                                Gummy Bears
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice2">6</span>
+                            </h6>
+                            <p class="card-text">
+                                Or maybe you like some good old-fashioned teddy gummies?
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity2" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 3-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://images-na.ssl-images-amazon.com/images/I/81Jqa1xBskL._SL1500_.jpg" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="3">
+                            <h5 class="card-title" id="itemName3">
+                                Swedish Fish
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice3">8</span>
+                            </h6>
+                            <p class="card-text">
+                                Swedish Fish are my favorite! ;)
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity3" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 4-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://images-na.ssl-images-amazon.com/images/I/91itvVR4mEL._SL1500_.jpg" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="4">
+                            <h5 class="card-title" id="itemName4">
+                                Snack Pack
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<strike>19</strike>&nbsp;<span id="itemPrice4">16.99</span>
+                            </h6>
+                            <p class="card-text">
+                                Save the most with the ultimate snack pack!
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity4" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--ITEM 5-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMgp7_FdQA8FYCePJsp5gl01IBXOqiF5LZVZOMMWha0ySbAvgTsHV-NLGda36cXahTiYgpxHVL&usqp=CAc" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="5">
+                            <h5 class="card-title" id="itemName5">
+                                Ski Mask
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice5">5</span>
+                            </h6>
+                            <p class="card-text">
+                                Can't go skiing without your ski mask!
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity5" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 6-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeJinHzZZ_rmZAnnC7AIFIj15eGVFesqxfvXO6Io-GzOJVvYpxBsBuUGB_mGyjS7Oe5-EOszJ&usqp=CAc" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="6">
+                            <h5 class="card-title" id="itemName6">
+                                Rubber Boots
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice6">11</span>
+                            </h6>
+                            <p class="card-text">
+                                These boots will save you when you have to work outside in the pouring rain!
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity6" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 7-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/705/fe2/4b040452c7ad9bf7ea15f32ab7.jpg" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="7">
+                            <h5 class="card-title" id="itemName7">
+                                Indecipherable Paradox
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice7">999.99</span>
+                            </h6>
+                            <p class="card-text">
+                                Even I do not know what this mystery contains, nor do I understand how to solve it!
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want whole number input!-->
+                                    <input type="number" id="itemQuantity7" class="form-control" placeholder="0" min = "0" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <!--ITEM 8-->
+                    <div class="col-sm card">
+                        <img class="card-img-top img-thumbnail rounded" src="https://cdn.mos.cms.futurecdn.net/54LNwFS62fB3XLm2gikEr6.jpg" alt="Item image here!">
+                        <div class="card-body d-flex flex-column" id="8">
+                            <h5 class="card-title" id="itemName8">
+                                The Universe
+                            </h5>
+                            <h6 class="card-subtitle mb-2 mt-1">
+                                Price: $<span id="itemPrice8">0</span>
+                            </h6>
+                            <p class="card-text">
+                                That's right! The Universe can be yours for free, no charge! (Shipping & Handling not included)
+                            </p>
+                            <div class="input-group mb-3 mt-auto">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Qty: </span>
+                                </div>
+                                    <!--ONLY want 0 or 1!-->
+                                    <input type="number" id="itemQuantity8" class="form-control" placeholder="0" min = "0" max="1" pattern=" 0+[1-9]*[1-9][0-9]" onkeypress="return (event.charCode == 48 || event.charCode == 49) && this.value.length <= 0"/>
+                            </div>
+                            <a href="#" class="btn btn-primary" name="addToCart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+            <!--FOOTER-->
+            <footer id="footer" class="container-fluid border-top">
+                <div>
+                    <h6>
+                        Thank you for shopping with us. If you have any problems checking out or want to see additional items on our page, feel free to  contact us! (We will be adding a Contact Us page shortly, thank you for your patience.)
+                    </h6>
+                </div>
+            </footer>   
+    </body>
+</html>

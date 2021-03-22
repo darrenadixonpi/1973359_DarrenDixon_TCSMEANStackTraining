@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es2020"
+    },
+    "include": [
+        "*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+        "checkout.ts",
+        "viewShop.ts"
+    ]
+}

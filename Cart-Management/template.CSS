@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+}
+.wrapper {
+    position:relative;
+    padding-bottom: 155px;
+    margin: 0 auto;
+    width: 90vw;
+    min-height: 100vh;
+}
+#navLink{
+    text-decoration:none;
+}
+#navLink:hover{
+    text-decoration:underline;
+}
+#footer{
+    /*text-align:center;*/
+    height: 155px;
+    bottom: 0;
+}
+#totalPrice{
+    text-align:center;
+}
+#mainMessages{
+    text-align:center;
+}
