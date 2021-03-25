@@ -1,1 +1,21 @@
-<p>loginpage works!</p>
+<div>
+    <!--
+        NEED FormGroup and FormControl
+        According to Model Driven Form
+        TextField, PasswordField, RadioButton, 
+        CheckBox etc are considered FormControl.
+        FormGroup contains one or more FormControls
+        We should be SEPARATING FormControls into 
+        FormGroups based on how they are related!!
+    -->
+    <!--NEED to import ReactiveFormsModule in app.module.ts-->
+    <form [formGroup]="loginInfo" (ngSubmit)="login()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:3px;">
+        <h6>Enter your information below please!</h6><hr/>
+        <label>Username:&nbsp;&nbsp;</label>
+        <input type="text" name="user" formControlName="user"/><br/>
+        <label>Password:&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name="pass" formControlName="pass"/><br/><br/>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Clear"/>
+    </form>
+</div>

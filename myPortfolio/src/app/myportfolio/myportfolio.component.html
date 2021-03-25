@@ -1,1 +1,30 @@
-<p>myportfolio works!</p>
+<div id="contactContent">
+    <!--
+        NEED FormGroup and FormControl
+        According to Model Driven Form
+        TextField, PasswordField, RadioButton, 
+        CheckBox etc are considered FormControl.
+        FormGroup contains one or more FormControls
+        We should be SEPARATING FormControls into 
+        FormGroups based on how they are related!!
+    -->
+    <!--NEED to import ReactiveFormsModule in app.module.ts-->
+    <form [formGroup]="contactInfo" style="border:1px solid black;width:25em;text-align:center;padding:3px;margin:3px;">
+        <h6>Enter the contact information below please!</h6><hr/>
+        <label>Name:
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+        </label>
+        <input type="text" name="name" formControlName="name"/><br/>
+        <label>Email:
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        <input type="text" name="email" formControlName="email"/><br/>
+        <label>Phone Number:&nbsp;</label>
+        <input type="number" name="phoneNumber" formControlName="phoneNumber"/><br/><br/>
+        <input type="submit" value="View Contacts" style="margin-right:2px;" class="btn btn-primary" (click)="submittedContactInfo('view')"/>
+        <input type="submit" value="Add Contact" style="margin-right:2px;" class="btn btn-primary" (click)="submittedContactInfo('submit')"/>
+        <input type="reset" value="Clear" class="btn btn-secondary"/>
+    </form>
+</div>

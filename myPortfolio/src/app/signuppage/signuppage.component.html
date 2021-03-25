@@ -1,5 +1,33 @@
 <div>
-    <form>
-        
+    <!--
+        NEED FormGroup and FormControl
+        According to Model Driven Form
+        TextField, PasswordField, RadioButton, 
+        CheckBox etc are considered FormControl.
+        FormGroup contains one or more FormControls
+        We should be SEPARATING FormControls into 
+        FormGroups based on how they are related!!
+    -->
+    <!--NEED to import ReactiveFormsModule in app.module.ts-->
+    <form [formGroup]="userInfo" (ngSubmit)="signUp()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:3px;">
+        <h6>Enter your information below please!</h6><hr/>
+        <div formGroupName="name">
+            <label>First Name:&nbsp;
+                <input type="text" name="firstName" formControlName="first"/>
+            </label><br/>
+            <label>Last Name:&nbsp;
+            <input type="text" name="lastName" formControlName="last"/>
+            </label><br/>
+        </div>
+        <div formGroupName="login">
+            <label>Username:&nbsp;&nbsp;
+                <input type="text" name="user" formControlName="user"/>
+            </label><br/>
+            <label>Password:&nbsp;&nbsp;&nbsp;
+            <input type="text" name="pass" formControlName="pass"/>
+            </label><br/><br/>
+        </div>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Clear"/>
     </form>
 </div>

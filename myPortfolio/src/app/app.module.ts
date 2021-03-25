@@ -8,6 +8,7 @@ import { SignuppageComponent } from './signuppage/signuppage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyportfolioComponent } from './myportfolio/myportfolio.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutmeComponent } from './aboutme/aboutme.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

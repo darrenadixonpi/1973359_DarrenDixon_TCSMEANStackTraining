@@ -1,8 +1,11 @@
 <div>
   <h1>Welcome to my Website!</h1>
   <div style="padding:1px 5px;">
-    <a routerLink="signup">Sign Up</a>
+    <a routerLink="home">Dashboard</a>
+    | <a routerLink="signup">Sign Up</a>
     | <a routerLink="login">Login</a>
+    | <a routerLink="aboutme">About Me</a>
+    <span *ngIf="false"> | <a routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a></span>
   </div>
   <hr/>
   <router-outlet>
