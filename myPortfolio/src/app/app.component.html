@@ -5,7 +5,10 @@
     | <a routerLink="signup">Sign Up</a>
     | <a routerLink="login">Login</a>
     | <a routerLink="aboutme">About Me</a>
-    <span *ngIf="false"> | <a routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a></span>
+    <span *ngIf=authService.isActive()>
+      | <a routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a>
+      &nbsp;<button type="submit" (click)="logout()" class="btn btn-primary">Logout</button>
+    </span>
   </div>
   <hr/>
   <router-outlet>

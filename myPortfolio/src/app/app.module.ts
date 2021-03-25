@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyportfolioComponent } from './myportfolio/myportfolio.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyAuthGuard } from './MyAuthGuard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MyAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MyAuthGuard } from '../MyAuthGuard';
 import { loginInfo } from '../userInfo-module';
 
 @Component({
@@ -14,17 +15,17 @@ export class LoginpageComponent implements OnInit {
   
   private storedUserInfo:any = localStorage.getItem("userData");
 
-  constructor(public router:Router) { }
+  constructor(public router:Router, public authService:MyAuthGuard) { }
 
   ngOnInit(): void {
   }
 
   //validate the login information
   validateLoginInfo():boolean{
-    if(this.storedUserInfo != null){
+    if(this.storedUserInfo !== null && (loginInfo.value.user !== null || loginInfo.value.pass !== null)){
       let userData = JSON.parse(this.storedUserInfo);
-      console.log(userData.login.user + " : " + userData.login.pass);
-      if(this.loginInfo.value.user === userData.login.user && this.loginInfo.value.pass === userData.login.pass){
+      console.log(userData.loginInfo.user + " : " + userData.loginInfo.pass);
+      if(this.loginInfo.value.user === userData.loginInfo.user && this.loginInfo.value.pass === userData.loginInfo.pass){
         return true;
       }else{
         return false;
@@ -36,8 +37,10 @@ export class LoginpageComponent implements OnInit {
 
   login():void{
     if(this.validateLoginInfo()){
-      alert("Successfully logged in!")
-      this.router.navigate(["myportfolio"]);
+      alert("Successfully logged in!");
+      localStorage.setItem("loggedInToken","true");
+      this.router.navigate(["home"]);
+      this.authService.changeActivation();
     }else{
       alert("Wrong information, please try again!")
     }
