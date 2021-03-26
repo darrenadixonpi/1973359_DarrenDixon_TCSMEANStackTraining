@@ -1,3 +1,9 @@
+/*
+Darren Dixon
+MyPortfolio
+March 24th, 2021
+App Module
+*/
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,6 +16,7 @@ import { MyportfolioComponent } from './myportfolio/myportfolio.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyAuthGuard } from './MyAuthGuard';
+import { userList } from './userInfoData-module';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,7 @@ import { MyAuthGuard } from './MyAuthGuard';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [MyAuthGuard],
+  providers: [MyAuthGuard,userList],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

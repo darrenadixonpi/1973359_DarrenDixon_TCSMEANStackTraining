@@ -1,6 +1,15 @@
+/*
+Darren Dixon
+MyPortfolio
+March 24th, 2021
+MyAuthGuard
+*/
+//ANGULAR imports
 import { Injectable } from "@angular/core";
-import { CanActivate } from "@angular/router";
+import { CanActivate,CanDeactivate } from "@angular/router";
 
+//AUTHGUARD, we also want to use this globally throughout the components,
+//HENCE we should use IOC with DI
 @Injectable()
 export class MyAuthGuard implements CanActivate{
 

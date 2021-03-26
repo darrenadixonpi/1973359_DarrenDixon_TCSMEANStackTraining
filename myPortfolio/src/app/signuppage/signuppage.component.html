@@ -1,3 +1,9 @@
+<!--
+Darren Dixon
+MyPortfolio
+March 24th, 2021 
+Sign Up Component
+-->
 <div>
     <!--
         NEED FormGroup and FormControl
@@ -9,7 +15,7 @@
         FormGroups based on how they are related!!
     -->
     <!--NEED to import ReactiveFormsModule in app.module.ts-->
-    <form [formGroup]="userInfo" (ngSubmit)="signUp()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:3px;">
+    <form [formGroup]="userInfo" (ngSubmit)="signUp()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:auto;">
         <h6>Enter your information below please!</h6><hr/>
         <div formGroupName="name">
             <label>First Name:&nbsp;
@@ -27,7 +33,7 @@
             <input type="text" name="pass" formControlName="pass"/>
             </label><br/><br/>
         </div>
-        <input type="submit" value="Submit"/>
-        <input type="reset" value="Clear"/>
+        <input type="submit" value="Submit" class="btn btn-primary m-1"/>
+        <input type="reset" value="Clear" class="btn btn-secondary"/>
     </form>
 </div>

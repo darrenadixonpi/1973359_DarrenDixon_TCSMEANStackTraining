@@ -1,44 +1,61 @@
+/*
+Darren Dixon
+MyPortfolio
+March 24th, 2021
+Login Component
+*/
+//ANGULAR imports
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+//CUSTOM imports
 import { MyAuthGuard } from '../MyAuthGuard';
 import { loginInfo } from '../userInfo-module';
+import { userList } from '../userInfoData-module';
 
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css']
 })
+
 export class LoginpageComponent implements OnInit {
 
   public loginInfo = loginInfo;
-  
-  private storedUserInfo:any = localStorage.getItem("userData");
+  private userIndex = 0;
 
-  constructor(public router:Router, public authService:MyAuthGuard) { }
+  constructor(public router:Router, public authService:MyAuthGuard, public userList:userList) { }
 
   ngOnInit(): void {
   }
 
-  //validate the login information
+  //VALIDATE the login information
   validateLoginInfo():boolean{
-    if(this.storedUserInfo !== null && (loginInfo.value.user !== null || loginInfo.value.pass !== null)){
-      let userData = JSON.parse(this.storedUserInfo);
-      console.log(userData.loginInfo.user + " : " + userData.loginInfo.pass);
-      if(this.loginInfo.value.user === userData.loginInfo.user && this.loginInfo.value.pass === userData.loginInfo.pass){
-        return true;
-      }else{
-        return false;
-      }
-    }else{
-      return false;
+    this.userList.getUserList();
+    let isValidated:boolean = false;
+    let loginInfo = this.loginInfo;
+    let userIndex = this.userIndex;
+    //CHECK all user information!
+    if(this.userList.userList != null){
+      let userList = this.userList.userList
+      userList.forEach(function (element){
+        if(element.user === loginInfo.value.user && element.pass === loginInfo.value.pass){
+          isValidated = true;
+        }
+        //IF the information has not been validated, we are still looking for the right user
+        if(!isValidated){
+          userIndex++;
+        }
+      });
     }
+    this.userIndex = userIndex;
+    return isValidated;
   }
 
+  //IF validation is successful, login!
   login():void{
     if(this.validateLoginInfo()){
-      alert("Successfully logged in!");
-      localStorage.setItem("loggedInToken","true");
+      localStorage.setItem("loggedInToken",this.loginInfo.value.user);
+      localStorage.setItem("userIndex",this.userIndex.toString());
       this.router.navigate(["home"]);
       this.authService.changeActivation();
     }else{

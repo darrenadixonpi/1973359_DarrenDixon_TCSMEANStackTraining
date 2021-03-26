@@ -1,3 +1,9 @@
+<!--
+Darren Dixon
+MyPortfolio
+March 24th, 2021 
+Login Component
+-->
 <div>
     <!--
         NEED FormGroup and FormControl
@@ -9,7 +15,7 @@
         FormGroups based on how they are related!!
     -->
     <!--NEED to import ReactiveFormsModule in app.module.ts-->
-    <form [formGroup]="loginInfo" (ngSubmit)="login()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:3px;">
+    <form [formGroup]="loginInfo" (ngSubmit)="login()" style="border:1px solid black;width:20em;text-align:center;padding:3px;margin:auto;">
         <h6>Enter your information below please!</h6><hr/>
         <label>Username:&nbsp;&nbsp;</label>
         <input type="text" name="user" formControlName="user"/><br/>

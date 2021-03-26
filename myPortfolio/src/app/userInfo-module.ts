@@ -1,3 +1,9 @@
+/*
+Darren Dixon
+MyPortfolio
+March 24th, 2021
+User FormGroup Module
+*/
 import { FormControl, FormGroup } from '@angular/forms';
 
 /*
@@ -5,6 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
     our login and signup pages to be used as "classes"
     that we can use to interact with the users' data
 */
+
+
 export var loginInfo = new FormGroup({
     user:new FormControl(),
     pass:new FormControl()    

@@ -1,7 +1,14 @@
-import { asLiteral } from '@angular/compiler/src/render3/view/util';
+/*
+Darren Dixon
+MyPortfolio
+March 24th, 2021
+MyPortfolio Component
+*/
+//Angular imports
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+//user-defined imports
 import { contactInfo } from '../contactInfo-module';
+import { userList} from '../userInfoData-module';
 
 @Component({
   selector: 'app-myportfolio',
@@ -10,68 +17,82 @@ import { contactInfo } from '../contactInfo-module';
 })
 export class MyportfolioComponent implements OnInit {
   
+  //PUBLIC: will be changed by HTML forms, PRIVATE: will only be changed by this class
   public contactInfo = contactInfo;
-  private storedContactInfo:Array<string> = [];
+  private userIndex:number = parseInt(localStorage.getItem("userIndex") as string);
   private fillerExists:boolean = false;
   public buttonType:string = "";
   private contactInteraction = "";
+  private user = localStorage.getItem("loggedInToken") as string;
 
-  constructor() {
-    if(localStorage.getItem("contactData") != null){
-      this.storedContactInfo = JSON.parse(localStorage.getItem("contactData") as string);
-    }
+  //user-defined module service (userList) must go in default constructor
+  constructor(public userList:userList) {
+
   }
 
   ngOnInit(): void {
   }
 
-  //validate the contact information
+  //This is used in HTML to get the user, since it is private.
+  getUser():string{
+    return this.user;
+  }
+
+  //VALIDATE the contact information: just make sure they are all not null for now.
   validateContactInfo():boolean{
     if(this.contactInfo.value.name !== null && this.contactInfo.value.email !== null && this.contactInfo.value.phoneNumber !== null){
       return true;
     }
-    alert("All contact fields must have input!");
     return false;
   }
 
-  //check for duplicate username
+  //CHECK for duplicate contact name
   checkDuplicateInfo():boolean{
-    if(this.storedContactInfo != null){
-      let isDuplicate:boolean = false;
+    //ASSUME there isn't one
+    let isDuplicate:boolean = false;
+    //IF the contact list is not empty, iterate through it
+    let contactList = this.userList.userList[this.userIndex].contactList; 
+    if(contactList != null){
       let contactName = this.contactInfo.value.name;
-      
-      this.storedContactInfo.forEach(function (element){
-        let tempContact = JSON.parse(element);
-        if(contactName === tempContact.name){
+      //ITERATION
+      contactList.forEach(function(element){
+        //IF we find the contact name, there is a duplicate
+        if(element.name === contactName){
           isDuplicate = true;
         }
       });
-      return isDuplicate;
-    }else{
-      alert("Duplicate contact name!");
-      return false;
     }
+    return isDuplicate;
   }
 
+  //STORE contact information
   storeContactInfo():void{
-    alert("Storing Contact Data!");
-    let contactData:string = JSON.stringify(this.contactInfo.value);
-    console.log(contactData);
-    this.storedContactInfo.push(contactData);
-    localStorage.setItem("contactData",JSON.stringify(this.storedContactInfo));
+    let contactData = this.contactInfo.value;
+    //WE must store the user information into localStorage and 
+    //re-retrieve it in-case the user refreshes the page
+    this.userList.userList[this.userIndex].contactList.push(contactData);
+    this.userList.setUserList();
+    this.userList.getUserList();
   }
 
+  //ADD contact information
   addContact():void{
+    //IF there is no duplicate contact and the contact information validates,
+    //THEN add the contact
     if(!this.checkDuplicateInfo()&&this.validateContactInfo()){
       this.storeContactInfo();
       this.contactInteraction = "add";
     }else{
-      alert("Cannot add a contact!");
+      this.contactInteraction = "addFailed";
+      alert("Cannot add a contact! Make sure the information is right and not a duplicate name!");
     }
   }
 
+  //SUBMIT contact information
+  //MAIN function ran by the "Add Contact" button
   submittedContactInfo(buttonType:string):void{
     this.buttonType = buttonType;
+    //EITHER we are viewing the contacts or adding a contact
     if(this.buttonType === "view"){
       this.contactInteraction = "view";
       this.displayContacts();
@@ -85,33 +106,29 @@ export class MyportfolioComponent implements OnInit {
   deleteItem(contactName:string){
     //INITIALIZE empty object and get contact data
     let count = 0;
-    let tempContact = {
-        name: "",
-        email: "",
-        phoneNumber: 0
-    };
-    let contactDataArray = this.storedContactInfo;
+    let contactDataArray = this.userList.userList[this.userIndex].contactList;
     //SEARCH contact data for the contact; if we find it, remove it
     contactDataArray.forEach(function (element){
-        tempContact = JSON.parse(element);
-        if(tempContact.name == contactName){
+        if(element.name == contactName){
             contactDataArray.splice(count,1);
         }
         count++;
     });
 
     //RE-STORE the new contact array in local storage
-    localStorage.setItem("contactData",JSON.stringify(contactDataArray));
+    this.userList.setUserList();
     //remove the contact on the contact table and re-display the table
     this.contactInteraction = "deleted";
     this.displayContacts();
   }
 
+  //DISPLAY the contacts table
   displayTable(body:HTMLElement):void{
-
+    //FOR easier reading
     let component = this;
-    if(((this.contactInteraction === "added" && this.storedContactInfo.length > 1) || this.contactInteraction === "deleted" || this.contactInteraction === "view")
-     && body.getElementsByTagName("table")[0] !== undefined){
+    let storedContactInfo = component.userList.userList[component.userIndex].contactList;
+    if(((component.contactInteraction === "added" && storedContactInfo.length > 1) || component.contactInteraction === "deleted" || component.contactInteraction === "view" || component.contactInteraction === "addFailed")
+    && body.getElementsByTagName("table")[0] !== undefined){
       body.removeChild(body.getElementsByTagName("table")[0]);
     }
     //CREATE all table elements
@@ -143,9 +160,6 @@ export class MyportfolioComponent implements OnInit {
     table.appendChild(tableHead);
 
     //CREATE an empty contact object to populate the contact data as we retrieve it.
-    let tempContactName = "";
-    let tempContactEmail = "";
-    let tempContactNumber = 0;
     let tempContact = {
         name: "",
         email: "",
@@ -153,34 +167,31 @@ export class MyportfolioComponent implements OnInit {
     };
 
     //for each contact object, add it to the table HTML
-    this.storedContactInfo.forEach(function (element) {
+    storedContactInfo.forEach(function (element) {
       //CREATE and populate contact object
-      tempContact = JSON.parse(element);
-      tempContactName = tempContact.name;
-      tempContactEmail = tempContact.email;
-      tempContactNumber = tempContact.phoneNumber;
+      tempContact = element;
 
       //CREATE a new row
       tableRow = document.createElement("tr");
       //add contact name
       tableData = document.createElement("th");
-      tableData.textContent = tempContactName.toString();
+      tableData.textContent = tempContact.name.toString();
       tableData.scope = "row";
       tableRow.appendChild(tableData);        
       //add contact email
       tableData = document.createElement("td");
-      tableData.textContent = tempContactEmail;
+      tableData.textContent = tempContact.email;
       tableRow.appendChild(tableData);
       //add contact phone number
       tableData = document.createElement("td");
-      tableData.textContent = tempContactNumber.toString();
+      tableData.textContent = tempContact.phoneNumber.toString();
       tableRow.appendChild(tableData);
       //add remove button
       tableData = document.createElement("td");
       let checkoutDeleteButton = document.createElement("a");
       checkoutDeleteButton.className = "btn btn-primary";
       checkoutDeleteButton.textContent = "X";
-      checkoutDeleteButton.onclick = function(){component.deleteItem(JSON.parse(element).name);}
+      checkoutDeleteButton.onclick = function(){component.deleteItem(element.name);}
       tableData.appendChild(checkoutDeleteButton);
       tableRow.appendChild(tableData);
 
@@ -192,41 +203,41 @@ export class MyportfolioComponent implements OnInit {
     });
   }
 
-  //display the filler message
+  //DISPLAY the filler message
   displayFillerMessage(body:HTMLElement):void{
-    let fillerMessage = document.createElement("div");
-    fillerMessage.id = "fillerMessage"
-    fillerMessage.textContent = "Oh no, you don't have any contacts!";
-    body.appendChild(fillerMessage);
+    //IF the filler message does not exist, display it
+    if(!this.fillerExists){
+      let fillerMessage = document.createElement("div");
+      fillerMessage.id = "fillerMessage"
+      fillerMessage.textContent = "Oh no, you don't have any contacts!";
+      body.appendChild(fillerMessage);
+    }
     this.fillerExists = true;
   }
 
-  //display the contacts
+  //DISPLAY the contacts
   displayContacts():void{
-    //need main container to add or remove elements to the page
+    //FOR easier reading
+    let storedContactInfo = this.userList.userList[this.userIndex].contactList;
+    //NEED main container to add or remove elements to the page
     let body = document.getElementById("contactContent") as HTMLElement;
 
-    //If the filler message is displayed, remove it
+    //IF the filler message is displayed, remove it
     if(this.fillerExists){
       body.removeChild(document.getElementById("fillerMessage") as HTMLElement);
       this.fillerExists = false;
     }
 
-    //If we are viewing an empty table, display the filler message
-    if(this.contactInteraction === "view" && this.storedContactInfo.length == 0){
-      this.displayFillerMessage(body);
-    }
-
     //IF there is any contact data, display it
-    if (localStorage.getItem("contactData") != null && this.storedContactInfo.length != 0) {
-        this.displayTable(body);
+    if (storedContactInfo != undefined && storedContactInfo.length != 0) {
+      this.displayTable(body);
     }
     //ELSE display a filler message
-    else if(this.contactInteraction !== "view") {
-        if(this.contactInteraction === "deleted"){
-            body.removeChild(body.getElementsByTagName("table")[0]);
-        }
+    else if(this.contactInteraction === "deleted"){
+        body.removeChild(body.getElementsByTagName("table")[0]);
         this.displayFillerMessage(body);
+    }else{
+      this.displayFillerMessage(body);
     }
   }
 }

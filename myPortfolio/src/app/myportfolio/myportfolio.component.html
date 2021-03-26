@@ -1,3 +1,9 @@
+<!--
+Darren Dixon
+MyPortfolio
+March 24th, 2021 
+MyPortfolio Component
+-->
 <div id="contactContent">
     <!--
         NEED FormGroup and FormControl
@@ -9,8 +15,8 @@
         FormGroups based on how they are related!!
     -->
     <!--NEED to import ReactiveFormsModule in app.module.ts-->
-    <form [formGroup]="contactInfo" style="border:1px solid black;width:25em;text-align:center;padding:3px;margin:3px;">
-        <h6>Enter the contact information below please!</h6><hr/>
+    <form [formGroup]="contactInfo" style="border:1px solid black;width:27em;text-align:center;padding:5px;margin:auto;">
+        <h6>{{getUser()}}, please enter your contact information below!</h6><hr/>
         <label>Name:
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            

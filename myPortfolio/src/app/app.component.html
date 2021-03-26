@@ -1,15 +1,41 @@
-<div>
+<!--
+Darren Dixon
+MyPortfolio
+March 24th, 2021 
+Main App Component
+-->
+<div style="text-align:center;">
   <h1>Welcome to my Website!</h1>
-  <div style="padding:1px 5px;">
-    <a routerLink="home">Dashboard</a>
-    | <a routerLink="signup">Sign Up</a>
-    | <a routerLink="login">Login</a>
-    | <a routerLink="aboutme">About Me</a>
-    <span *ngIf=authService.isActive()>
-      | <a routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a>
-      &nbsp;<button type="submit" (click)="logout()" class="btn btn-primary">Logout</button>
-    </span>
-  </div>
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav nav-pills" style="padding:2px;">
+        <li class="nav-item" style="margin:0px 2px;">
+          <a class="nav-link active" routerLink="home">Dashboard</a>
+        </li>
+        <li class="nav-item" style="margin:0px 2px;">
+          <a class="nav-link active" routerLink="signup">Sign Up</a>
+        </li>
+        <li class="nav-item"  style="margin:0px 2px;" *ngIf=!authService.isActive()>
+          <a class="nav-link active" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item" style="margin:0px 2px;">
+          <a class="nav-link active" routerLink="aboutme">About Me</a>
+        </li>
+        <li class="nav-item" style="margin:0px 2px;" *ngIf=authService.isActive()>
+          <a class="nav-link active" routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a>
+        </li>
+        <li class="nav-item" style="margin:0px 2px;" *ngIf=authService.isActive()>
+          <a class="nav-link active" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+      <!--
+      <span *ngIf=authService.isActive()>
+        | <a routerLink="myportfolio" id="myPortfolioLink">My Portfolio</a>
+        <button type="submit" (click)="logout()" class="btn btn-primary">Logout</button>
+      </span>
+      -->
+    </div>
+  </nav>  
   <hr/>
   <router-outlet>
 
