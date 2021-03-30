@@ -1,0 +1,82 @@
+<!--
+Darren Dixon
+Task Tracker
+March 29th, 2021 
+TaskTracker Component
+-->
+<div>
+    <br/>
+    <!--TASK INPUT FORM-->
+    <div class="md-form" style="margin:auto; width:300px; max-width:50vw;;border:1px solid black;" id="taskBody">    
+        <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+            <h3>Add your task here!</h3>
+            <mat-divider></mat-divider>
+            <mat-form-field>
+                <mat-label for="id" class="">Task ID</mat-label>
+                <input matInput type="number" name="id" id="id" class="form-control" ngModel required/>
+            </mat-form-field><br/>
+            <mat-form-field>
+                <mat-label for="taskName" class="">Task Name</mat-label>
+                <input matInput type="text" name="name" id="name" class="form-control" ngModel required/>
+            </mat-form-field><br/>
+            <mat-form-field>
+                <mat-label>Task Information</mat-label>
+                <textarea matInput class="form-control" name="info" id="info" ngModel required></textarea>
+            </mat-form-field><br/>
+            <mat-form-field>
+                <mat-label>Task Deadline</mat-label>
+                <input matInput type="date" name="deadline" id="deadline" class="form-control" ngModel required/><br/>
+            </mat-form-field><br/>
+            <span>
+                <button mat-raised-button color="primary" type="submit" class="m-1" value="Add Task" [disabled]="!taskForm.valid">Add Task</button>
+                <button mat-raised-button color="basic" type="reset" class="m-1" value="Clear">Clear</button>
+            </span>
+        </form>
+    </div>
+    <br/>
+    <div>
+        <!--This is a modification of a template that I found online of mat-table filtering-->
+          <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+            <!-- Task ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef><strong>Task ID</strong></th>
+              <td mat-cell *matCellDef="let task"><strong>{{task.id}}</strong></td>
+            </ng-container>
+          
+            <!-- Task Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef><strong>Name</strong></th>
+              <td mat-cell *matCellDef="let task"> {{task.name}} </td>
+            </ng-container>
+          
+            <!-- Task Info Column -->
+            <ng-container matColumnDef="info">
+              <th mat-header-cell *matHeaderCellDef><strong>Description</strong></th>
+              <td mat-cell *matCellDef="let task"> {{task.info}} </td>
+            </ng-container>
+          
+            <!-- Task Deadline Column -->
+            <ng-container matColumnDef="deadline">
+              <th mat-header-cell *matHeaderCellDef><strong>Deadline</strong></th>
+              <td mat-cell *matCellDef="let task"> {{task.deadline}} </td>
+            </ng-container>
+
+            <!-- Delete Task Button Column -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef><strong>Remove</strong></th>
+                <td mat-cell *matCellDef="let task">
+                    <button mat-raised-button color="basic" type="delete" class="m-1" value="Remove" (click)="removeTask(task)">X</button>
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="text-align:left;"></tr>
+
+            
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="5">No tasks! D:</td>
+            </tr>
+          </table>
+    </div>
+</div>

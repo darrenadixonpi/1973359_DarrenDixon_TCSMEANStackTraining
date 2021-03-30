@@ -1,0 +1,28 @@
+<!--
+Darren Dixon
+Online Test
+March 29th, 2021 
+Exam Component
+-->
+<div>    
+    <form #currentExam="ngForm" (ngSubmit)="gradeExam(currentExam)">
+        <h3>This is your {{exam.title}}!</h3>
+        <br/>
+        <div *ngFor="let question of exam.questions" style="text-align:left;padding-left:20px;">
+            <span>{{question.question}}</span>
+            <br/>
+            <span class="radio" *ngFor="let choice of question.choices; let cIndex = index">
+                <input type="radio" name="{{question.question}}" [value]="choice" ngModel required/>
+                {{choice}}
+                <span id="{{question.question}}{{question.choices[cIndex]}}" style="color:red;margin-left:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <br/>
+            </span>
+            <hr/>
+        </div>
+        <br/>
+        <div><h4 id="examResults"></h4></div>
+        <br/>
+        <input type="submit" class="btn btn-primary m-1" value="Submit Responses" [disabled]="!currentExam.valid"/>
+        <input type="reset" (click)="resetExam()" class="btn btn-secondary m-1" value="Reset Exam"><br/>
+    </form>
+</div>

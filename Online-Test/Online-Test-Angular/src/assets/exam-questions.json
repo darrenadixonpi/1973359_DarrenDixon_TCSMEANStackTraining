@@ -1,0 +1,104 @@
+{
+    "title":"DOOM",
+    "questions":[
+        {
+            "question":"The differential equation 2(dy/dx) + (x^2)y = 2x + 3, y(0) = 5 is...",
+            "choices":[
+                "Linear",
+                "Nonlinear",
+                "Linear with fixed constants",
+                "Undeterminable to be linear or nonlinear"
+            ],
+            "correctAnswer":"0"
+        },
+        {
+            "question":"Given 2(dy/dx) + 3y = sin(2x), y(0) = 6, y(2) most nearly is...",
+            "choices":[
+                "0.17643",
+                "0.29872",
+                "0.32046",
+                "0.58024"
+            ],
+            "correctAnswer":"2"
+        },
+        {
+            "question":"The form of the exact solution to 2(dy/dx) + 3y = e^(-x), y(0) = 5 is...",
+            "choices":[
+                "Ae^(-1.5x) + Be^(-x)",
+                "Ae^(-1.5x) + Bxe^(-x)",
+                "Ae^(1.5x) + Be^(-x)",
+                "Ae^(1.5x) + Bxe^(-x)"
+            ],
+            "correctAnswer":"0"
+        },
+        {
+            "question":"The following nonlinear differential equation can be solved exactly by separation of variables. d(theta)/dt = [-10^(-6)](theta^2 - 81), theta(0) = 1000. The value of theta(100) most nearly is...",
+            "choices":[
+                "-99.99",
+                "909.10",
+                "1000.32",
+                "1111.10"
+            ],
+            "correctAnswer":"2"
+        },
+        {
+            "question":"A spaceship is 75m long according to an astronaut on the ship. As it travels away from Earth, scientists on the ground measure the length of the ship to be 51m. How fast is the spaceship traveling away from Earth?",
+            "choices":[
+                "0.73c",
+                "0.99c",
+                "9001c",
+                "-0c",
+                "undefined"
+            ],
+            "correctAnswer":"0"
+        },
+        {
+            "question":"According to the Bohr model of the atom, what is the radius of orbit of an electron in the n=4 orbital of hydrogen? What minimum frequency photon is required to remove the electron from the atom?",
+            "choices":[
+                "r = 0.846nm, f = 2.05*10^14 Hz",
+                "r = 0.873nm, f = 2.99*10^16 Hz",
+                "r = 0.816nm, f = 2.04*10^13 Hz",
+                "r = 0.834nm, f = 2.98*10^15 Hz"
+            ],
+            "correctAnswer":"0"
+        },
+        {
+            "question":"What happened in 1942?",
+            "choices":[
+                "Beats me...",
+                "My mom was born",
+                "WWII began",
+                "You dumby WWII began in 1939!"
+            ],
+            "correctAnswer":"3"
+        },
+        {
+            "question":"What is the answer to life?",
+            "choices":[
+                "69",
+                "420",
+                "42",
+                "The answer is subjective."
+            ],
+            "correctAnswer":"2"
+        },
+        {
+            "question":"Will we ever escape the clutches of our own suffering?",
+            "choices":[
+                "Only if we want to.",
+                "I will, but you won't.",
+                "I cannot until I finish this exam.",
+                "My suffering is your fault."
+            ],
+            "correctAnswer":"0"
+        },
+        {
+            "question":"You should really listen to La bohème by Charles Aznavour.",
+            "choices":[
+                "True",
+                "False"
+            ],
+            "correctAnswer":"0"
+        }
+    ]
+}
