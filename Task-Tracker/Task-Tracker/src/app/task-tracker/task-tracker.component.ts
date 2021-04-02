@@ -48,7 +48,7 @@ export class TaskTrackerComponent implements OnInit {
     this.tasks.push(tempTask);
     //console.log(this.tasks);
     this.taskServer.storeTasks(this.tasks[this.tasks.length-1]);
-    this.rePopulateTasks();
+    //this.rePopulateTasks();
   }
 
   //REMOVE a task
@@ -63,6 +63,6 @@ export class TaskTrackerComponent implements OnInit {
     });
     this.tasks = tasks;
     this.taskServer.deleteTask(task);
-    this.rePopulateTasks();
+    //this.rePopulateTasks();
   }
 }
