@@ -20,7 +20,7 @@
         function sendToServer(){
             var name = document.getElementById("name");
             var message = document.getElementById("message");
-            alert(name.value);
+            //alert(name.value);
 
             var messageData = {"name":name.value,"message":message.value};
             socket.emit("user message",messageData);
