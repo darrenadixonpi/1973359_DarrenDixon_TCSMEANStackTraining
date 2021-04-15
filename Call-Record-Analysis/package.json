@@ -1,0 +1,24 @@
+{
+  "name": "call-record-analysis",
+  "version": "1.0.0",
+  "description": "Retrieve call-records from JSON file and store in MongoDB",
+  "main": "json_to_mongodb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darrenadixonpi/1973359_DarrenDixon_TCSMEANStackTraining.git#main"
+  },
+  "author": "Darren Dixon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darrenadixonpi/1973359_DarrenDixon_TCSMEANStackTraining/issues"
+  },
+  "homepage": "https://github.com/darrenadixonpi/1973359_DarrenDixon_TCSMEANStackTraining/tree/main#readme",
+  "dependencies": {
+    "fs": "*",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.3"
+  }
+}
