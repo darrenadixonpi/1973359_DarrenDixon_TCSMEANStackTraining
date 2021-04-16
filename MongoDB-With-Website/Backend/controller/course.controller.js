@@ -87,7 +87,7 @@ const updateCourse = (req,res)=>{
 
 //Delete course details
 const deleteCourse = (req,res)=>{
-    CourseModel.deleteOne({_id:req.body.courseID},(error,data)=>{
+    CourseModel.deleteOne({_id:parseInt(req.body.courseID)},(error,data)=>{
         if(!error){
             console.log("Record deleted successfully!");
             res.status(204).send();

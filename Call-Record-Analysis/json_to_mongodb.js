@@ -36,7 +36,7 @@ db.once("open",()=>{
         callCharge:String
     });
     //create the model
-    db.createCollection("Calls");
+    //db.createCollection("Calls");
     let Call = mongoose.model("",CallSchema,"Calls");
 
     

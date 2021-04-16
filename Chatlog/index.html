@@ -1,0 +1,40 @@
+<!--
+    Darren Dixon
+    April 16th, 2021
+    Chatlog
+    Homepage
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/JavaScript">
+        var socket = io();
+
+        function sendToServer(){
+            var name = document.getElementById("name");
+            var message = document.getElementById("message");
+
+            var messageData = {"name":name.value,"message":message.value};
+            socket.emit("user message",messageData);
+        }
+    </script>
+</head>
+<body>
+    <form id="messageForm" style="border:1px solid black; width:300px;margin:auto;text-align:center;">
+        <h3>Send Message To Server</h3><hr/>
+        Name: <input type="text" name="name" id="name"/><br/>
+        Message: <input type="text" name="message" id="message"/><br/>
+        <button type="submit" value="Send" onclick="sendToServer()" method="post">Send</button>
+        <button type="reset" value="Clear">Clear</button><br/>
+    </form><br/>
+    <form action="getChatLog" style="border:1px solid black; width:300px;margin:auto;text-align:center;">
+        <h3>Receive Chatlog From Server</h3><hr/>
+        <button type="submit" value="Display" method="get">Display</button>
+    </form><br/>
+</body>
+</html>

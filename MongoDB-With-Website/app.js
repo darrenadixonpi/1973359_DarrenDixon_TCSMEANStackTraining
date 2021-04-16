@@ -8,6 +8,7 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const port = 9999;
 const db = "nodeDB";
 
@@ -17,6 +18,7 @@ const url = "mongodb://localhost:27017/"+db;
 //middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(methodOverride("_method"));
 
 //DB connection without warning
 const mongooseDbOption = {
